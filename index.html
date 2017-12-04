@@ -18,13 +18,15 @@
                 <span id="initial-countdown">5</span>
             </p>
         </div>
-        <div id="game">
+        <div class="hidden" id="game">
             <p>Time until next question
                 <span id="game-timer" />
             </p>
+            <div id="question-num"></div>
             <div id="question"></div>
             <div id="choices">
                 <p>
+                    
                     <div id="A"></div>
                     <div id="B"></div>
                     <div id="C"></div>
@@ -32,7 +34,7 @@
                 </p>
             </div>
         </div>
-        <div class="results">
+        <div class="hidden" id="result-section">
             <div id="results"></div>
             <button class="restart-btn" onclick="restartGame()">Play Again</button>
         </div>
