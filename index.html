@@ -14,22 +14,31 @@
     <div class="container">
         <h1>Timed Tech Quiz</h1>
         <div id="welcome">
-            <p> Get ready, the quiz will begin in
-                <span id="initial-countdown"></span>
+            <p class="timer"> Get ready, the quiz will begin in
+                <span id="initial-countdown">5</span>
             </p>
         </div>
         <div id="game">
-            <div id="game-timer"></div>
+            <p>Time until next question
+                <span id="game-timer" />
+            </p>
             <div id="question"></div>
-            <div id="choices"></div>
+            <div id="choices">
+                <p>
+                    <div id="A"></div>
+                    <div id="B"></div>
+                    <div id="C"></div>
+                    <div id="D"></div>
+                </p>
+            </div>
         </div>
         <div class="results">
             <div id="results"></div>
-            <button class="restartBtn" onclick="restartGame()">Play Again</button>
+            <button class="restart-btn" onclick="restartGame()">Play Again</button>
         </div>
     </div>
     <script src="assets/javascript/trivia.js"></script>
-    
+
 </body>
 
 </html>
