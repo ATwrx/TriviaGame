@@ -1,6 +1,13 @@
+
+
 .hidden {
     display: none;
 }
 .selected {
     border: 2px solid green;
+}
+#game {
+    background: rgba(77, 70, 70, 0.8);
+    color: #ffffff;
+    padding-top: 5px;
 }
