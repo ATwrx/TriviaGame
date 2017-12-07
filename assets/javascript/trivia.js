@@ -114,7 +114,7 @@ function initialCountdown() {
 }
 
 // Game Runtime
-// this needs to go in somewhere i'm sure  --> var numCorrect, numIncorrect = 0;
+// this needs to go in somewhere --> var numCorrect, numIncorrect = 0;
 function initGame() {
     $("#welcome").hide();
     var gameTime = 6; //21 for production
@@ -134,30 +134,27 @@ function initGame() {
         $("#question-num").html("<h4> Question #" + (currentQuestion + 1) + "</h4>");
         questionSpace.text(triviaStr.question);
         jQuery.each(answerSet, function (i, val) {
-            $("#" + i).text(i + ": " + val);
-        });
-        $("#game").show("slow");
-        // Reminder: remove test times and console.logs()
-        if (currentQuestion === 9 && gameTime === 0) {
-            console.log("Game completed in  " + totalTime + " seconds.");
-            $("#game").hide();
-            $("#result-section").show("slow");
-            clearInterval(gameTimer);
-            return;
-        } else if (gameTime === 0 && currentQuestion !== 9) {
-            gameTime += 6; //21 for production
-            $("#game").hide("slow");
-            console.log("Question " + currentQuestion + " finished in " + totalTime); //Test
-            return currentQuestion++;
-        }
-
-
-
-
-
+            $("#" + i).append($("")
+            )).html("<label for='" + i + "'>" + val + " </label>");
+    });
+    $("#game").show("slow");
+    // Reminder: remove test times and console.logs()
+    if (currentQuestion === 9 && gameTime === 0) {
+        console.log("Game completed in  " + totalTime + " seconds.");
+        $("#game").hide();
+        $("#result-section").show("slow");
+        clearInterval(gameTimer);
+        return;
+    } else if (gameTime === 0 && currentQuestion !== 9) {
+        gameTime += 6; //21 for production
+        $("#game").hide("slow");
+        console.log("Question " + currentQuestion + " finished in " + totalTime); //Test
+        return currentQuestion++;
     };
-}
+};
+};
 
+// Results Section
 
 
 // add a button that fires this function in the results div

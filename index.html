@@ -25,17 +25,18 @@
             <div id="question-num"></div>
             <div id="question"></div>
             <div id="choices">
-                <p>
-
-                    <input type="radio" name="answer-choice" id="A">
-                    <input type="radio" name="answer-choice" id="B">
-                    <input type="radio" name="answer-choice" id="C">
-                    <input type="radio" name="answer-choice" id="D">
-                </p>
+                <input type="radio" name="answer-choice" id="A" value="A" name="A" />
+                <input type="radio" name="answer-choice" id="B" value="B" name="B" />
+                <input type="radio" name="answer-choice" id="C" value="C" name="C" />
+                <input type="radio" name="answer-choice" id="D" value="D" name="D" />
             </div>
         </div>
         <div class="hidden" id="result-section">
-            <div id="results"></div>
+            <div id="results">
+                <div id="number-wrong"></div>
+                <div id="number-correct"></div>
+                <div id="score"></div>
+            </div>
             <button class="restart-btn" onclick="restartGame()">Play Again</button>
         </div>
     </div>
