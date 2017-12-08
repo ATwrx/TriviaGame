@@ -12,17 +12,22 @@
 
 <body>
     <div class="container">
-        <h1>Timed Tech Quiz</h1>
+        <h1 class="title">Timed Tech Quiz</h1>
         <div id="welcome">
-            <p class="timer"> Get ready, the quiz will begin in
-                <span id="initial-countdown">5</span>
+            <p class="timer hidden">
+                Get Ready:
+                <span class="first-timer">5</span>
+                <div id="intro">
+                    <p>Test your tech knowledge! Click the button to begin.</p>
+                    <button onclick="initCounter()">Start</button>
+                </div>
             </p>
         </div>
         <div class="hidden" id="game">
-            <p>Time until next question
-                <span id="game-timer" />
-            </p>
-            <div id="question-num"></div>
+            <div class="inline">Timer:
+                <span class="game-timer">15</span>
+            </div>
+            <div class="inline" id="question-num"></div>
             <div id="question"></div>
             <div id="choices">
                 <div id="A" class="answer" value="A"></div>
@@ -30,6 +35,7 @@
                 <div id="C" class="answer" value="C"></div>
                 <div id="D" class="answer" value="D"></div>
             </div>
+            <button onclick="nextQuestion()">Next Question</button>
         </div>
         <div class="hidden" id="result-section">
             <div id="results">
@@ -37,7 +43,8 @@
                 <div id="number-correct"></div>
                 <div id="score"></div>
             </div>
-            <button class="restart-btn" onclick="restartGame()">Play Again</button>
+            <br>
+            <!-- <button class="restart-btn" onclick="restartGame()">Play Again</button> -->
         </div>
     </div>
     <script src="assets/javascript/trivia.js"></script>

@@ -66,7 +66,7 @@ var trivia = [{
         "C": "The Linux Foundation",
         "D": "Microsoft"
     },
-    correctAnswer: "D"
+    correctAnswer: "B"
 },
 {
     question: "In a website browser address bar what does \"www\" stand for?",
@@ -100,16 +100,20 @@ var trivia = [{
 }
 ];
 // Starting Countdown Functions
-var startTime = 6;
-var initialCounter = setInterval(initialCountdown, 1000);
+var startTime = 5;
+function initCounter() {
+    $("#intro").hide();
+    $(".timer").removeClass("hidden");
+    setInterval(initialCountdown, 1000);
+}
 function initialCountdown() {
     startTime--;
     if (startTime === 0) {
-        clearInterval(initialCounter);
+        clearInterval(initCounter);
         initGame();
         return;
     }
-    $("#initial-countdown").text(startTime);
+    $(".first-timer").text(startTime);
 }
 
 // Answer toggle 
@@ -118,81 +122,78 @@ $(".answer").click(function () {
     $(this).addClass("selected");
 })
 
-
 // Game Runtime
-
 function initGame() {
     $("#welcome").hide();
-    var gameTime = 6; //21 for production
+    $("#replaceStr").removeClass("hidden");
+    $("#removeStr").hide();
+    var gameTime = 15; //21 for production
     var currentQuestion = 0;
     var numIncorrect = 0;
     var numCorrect = 0;
     var gameTimer = setInterval(runTrivia, 1000);
-    var totalTime = 0; // Time Test
 
-
-
-
-
+    $("#next-question").click(function () {
+        gameTime = 1;
+        return gameTime;
+    })
     function runTrivia() {
-
         var triviaStr = trivia[currentQuestion];
         var answers = triviaStr.answerSet;
         var correctAnswer = triviaStr.correctAnswer;
         var questionArea = $("#question");
         var answerChoices = $("#choices");
-        gameTime--; // Keeps time for each interval
-        totalTime++; // Time Test -- remove later
+        gameTime--;
+
         // Updates the DOM for each question
-        $("#game-timer").html(gameTime);
+        $(".game-timer").text(parseInt(gameTime));
         $("#question-num").html("<h4> Question #" + (currentQuestion + 1) + "</h4>");
         questionArea.text(triviaStr.question);
         $.each(answers, function (i, val) {
             $("#" + i).text(i + " : " + val);
         })
+        $("#" + correctAnswer).addClass("correct");
         $("#game").show("slow");
 
 
-        // Right - Wrong Logic
-        // Reminder: remove test times and console.logs()
-        var selected = $(".selected").val();
-        console.log(selected + correctAnswer);
-
-        if (currentQuestion === 9 && gameTime === 0) {
-            console.log("Game completed in  " + totalTime + " seconds.");
-            $("#game").hide();
-
-            console.log(numCorrect + " Correct.");
-            console.log(numIncorrect + " Incorrect.");
+        function showResults() {
+            var score = numCorrect * 10;
+            $("#number-correct").html("<h3>You got " + numCorrect + " answers correct.</h3>");
+            $("#number-wrong").html("<h3>You got " + numIncorrect + " answers wrong.</h3>");
+            $("#score").text(score + "%");
             $("#result-section").show("slow");
-            clearInterval(gameTimer);
-            if (selected == correctAnswer) {
-                return numCorrect++;
+        }
+
+        var selected = $(".selected");
+        if (gameTime === 0 && currentQuestion === 9) {
+            $("#game").hide();
+            if (selected.hasClass("correct")) {
+                numCorrect++;
             } else {
-                return numIncorrect++;
+                numIncorrect++;
             };
+            showResults();
+            clearInterval(gameTimer);
         } else if (gameTime === 0 && currentQuestion !== 9) {
-            gameTime += 6; //21 for finished
-            console.log(numCorrect + " Correct.");
-            console.log(numIncorrect + " Incorrect.");
+            gameTime += 15; //21 for finished
             $("#game").hide("slow");
             $(".answer").removeClass("selected");
-            console.log("Question " + currentQuestion + " finished in " + totalTime); //Test
-            if (selected == correctAnswer) {
-                return numCorrect++ , currentQuestion++;
+            if (selected.hasClass("correct")) {
+                numCorrect++;
+                currentQuestion++;
             } else {
-                return numIncorrect++ , currentQuestion++;
+                numIncorrect++;
+                currentQuestion++;
             };
-
+            $("#" + correctAnswer).removeClass("correct");
         };
     };
-    var score = Math.floor(numCorrect / 100);
-    $("#number-correct").html("<h3>You got " + numCorrect + " answers correct.</h3>");
-    $("#number-wrong").html("<h3>You got " + numIncorrect + " answers wrong.</h3>");
-    $("#score").text(score);
+
 };
 
-
+function nextQuestion() {
+    return gameTime = 0;
+}
 // add a button that fires this function in the results div
 function restartGame() {
     location.reload();
