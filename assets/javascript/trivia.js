@@ -133,7 +133,7 @@ function initGame() {
     var numCorrect = 0;
     var gameTimer = setInterval(runTrivia, 1000);
 
-    $("#next-question").click(function () {
+    $("#next-btn").click(function () {
         gameTime = 1;
         return gameTime;
     })
