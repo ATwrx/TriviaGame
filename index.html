@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <title>Trivia</title>
 </head>
@@ -13,40 +14,59 @@
 <body>
     <div class="container">
         <h1 class="title">Timed Tech Quiz</h1>
+        <hr>
         <div id="welcome">
-            <p class="timer hidden">
-                Get Ready:
-                <span class="first-timer">5</span>
-                <div id="intro">
-                    <p>Test your tech knowledge! Click the button to begin.</p>
-                    <button onclick="initCounter()">Start</button>
-                </div>
-            </p>
+          <p class="timer hidden">
+            Get Ready:
+            <span class="first-timer">5</span>
+            <div id="intro" class="row center-block">
+              <div class="col-sm-6 ">
+                <p>Test your tech knowledge! <br /> Click the button to begin.</p>
+              </div>
+              <div class="col col-sm-6">
+                <button class="btn btn-success btn-block" onclick="initCounter()" id="start-btn">Start</button>
+              </div>
+            </div>
+          </p>
         </div>
         <div class="hidden" id="game">
-            <div class="inline">Timer:
-                <span class="game-timer">15</span>
+          <div class="game-top">
+          <div id="question-num"></div>
+          <div class="inline-time">
+            <p>Timer:
+            <span class="game-timer">15</span>
+              </p>
+          </div>
+        </div>
+          <div id="question"></div>
+          <div id="choices">
+            <div id="A" class="answer" value="A"></div>
+            <div id="B" class="answer" value="B"></div>
+            <div id="C" class="answer" value="C"></div>
+            <div id="D" class="answer" value="D"></div>
+          </div>
+          <br>
+      
+          <div class="row">
+            <div class="col-sm-6">
+              <button class="btn btn-primary btn-block" id="next-btn">Next Question</button>
             </div>
-            <div class="inline" id="question-num"></div>
-            <div id="question"></div>
-            <div id="choices">
-                <div id="A" class="answer" value="A"></div>
-                <div id="B" class="answer" value="B"></div>
-                <div id="C" class="answer" value="C"></div>
-                <div id="D" class="answer" value="D"></div>
+            <div class="col-sm-6">
+      <!--         <button class="btn btn-warning btn-block pull-right" id="restart-btn" onclick="restartGame()">Restart</button> -->
             </div>
-            <button id="next-btn">Next Question</button>
+          </div>
+      
         </div>
         <div class="hidden" id="result-section">
-            <div id="results">
-                <div id="number-wrong"></div>
-                <div id="number-correct"></div>
-                <div id="score"></div>
-            </div>
-            <br>
-            <button class="restart-btn" onclick="restartGame()">Play Again</button>
+          <div id="results">
+            <div id="number-wrong"></div>
+            <div id="number-correct"></div>
+            <div id="score"></div>
+          </div>
+          <br>
+      <!--     <button class="restart-btn btn btn-danger" onclick="restartGame()">Play Again</button> -->
         </div>
-    </div>
+      </div>
     <script src="assets/javascript/trivia.js"></script>
 
 </body>

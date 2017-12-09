@@ -1,9 +1,3 @@
-.container
-    width: 960px
-    height: 100%
-    margin: 0 auto
-
-
 
 .hidden 
     display: none
@@ -11,13 +5,37 @@
     display: inline
 .title
     text-align: center
+#next-btn
+    margin-bottom: 25px
+$border : 2px solid green
 .selected 
-    border: 2px solid green
+    border-top: $border
+    border-bottom: $border
     background: black
     color: white
-
+#question-num, .inline-time
+    display: inline-block
+.inline-time
+    float: right
+    margin-right: 20px
+    padding-top: 5px
 #game 
     background: rgba(77, 70, 70, 0.8)
     color: #ffffff
-    padding-top: 5px
-    padding-left: 20px
+    padding: 5px 20px 0px 20px
+.game-top
+    width: 100%
+    
+.answer
+    max-width: 400px
+    border-radius: 15px
+    padding-left: 10px
+#question
+    border: $border
+    padding: 5px
+    background: black
+#question , #choices
+    margin-bottom: 10px
+#results
+    text-align: center
+  
